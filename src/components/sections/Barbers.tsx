@@ -108,12 +108,12 @@ export default function Barbers() {
           </div>
           <div ref={galleryRef} className="grid grid-cols-3 md:grid-cols-6 gap-1">
             {[
-              { src: '/images/hasilcuku1.webp', alt: '' },
-              { src: '/images/hasilcuku2.webp', alt: '' },
-              { src: '/images/hasilcuku3.webp', alt: '' },
-              { src: '/images/hasilcuku4.webp', alt: '' },
-              { src: '/images/hasilcuku5.webp', alt: '' },
-              { src: '/images/hasilcuku6.webp', alt: '' },
+              { src: '/images/hasilcukur1.webp', alt: '' },
+              { src: '/images/hasilcukur2.webp', alt: '' },
+              { src: '/images/hasilcukur3.webp', alt: '' },
+              { src: '/images/hasilcukur4.webp', alt: '' },
+              { src: '/images/hasilcukur5.webp', alt: '' },
+              { src: '/images/hasilcukur6.webp', alt: '' },
             ].map((photo, i) => (
               <div key={i} data-photo className="aspect-square overflow-hidden bg-black relative cursor-default">
                 <Image src={photo.src} alt={photo.alt} fill className="object-cover grayscale" sizes="(max-width: 768px) 33vw, 16vw" />
