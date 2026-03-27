@@ -48,7 +48,7 @@ export default function Gallery() {
       {/* Header */}
       <div className="px-8 md:px-24 mb-16 max-w-7xl mx-auto">
         <h2 className="font-headline text-5xl md:text-7xl font-black tracking-tighter uppercase">
-          THE CUTS
+          GALLERY
         </h2>
         <div className="h-[2px] w-12 bg-black mt-6" />
       </div>
