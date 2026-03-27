@@ -58,7 +58,7 @@ export default function Services() {
           <div className="overflow-hidden">
             <h2
               ref={titleRef}
-              className="font-headline text-5xl md:text-7xl font-black tracking-tighter uppercase"
+              className="font-headline text-[2.5rem] leading-tight md:text-7xl font-black tracking-tighter uppercase whitespace-nowrap"
             >
               LAYANAN KAMI
             </h2>
