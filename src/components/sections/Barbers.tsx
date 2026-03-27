@@ -11,7 +11,6 @@ export default function Barbers() {
   const galleryRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    // Cards stagger
     const cards = gridRef.current?.querySelectorAll('[data-barber]')
     if (cards) {
       gsap.from(cards, {
@@ -26,16 +25,16 @@ export default function Barbers() {
       cards.forEach((card) => {
         const img = card.querySelector('img')
         if (!img) return
-        card.addEventListener('mouseenter', () => {
+        // pointerenter works on both mouse and touch
+        card.addEventListener('pointerenter', () => {
           gsap.to(img, { filter: 'grayscale(0%)', scale: 1.04, duration: 0.5, ease: 'power2.out' })
         })
-        card.addEventListener('mouseleave', () => {
+        card.addEventListener('pointerleave', () => {
           gsap.to(img, { filter: 'grayscale(100%)', scale: 1, duration: 0.5, ease: 'power2.out' })
         })
       })
     }
 
-    // Gallery photos stagger
     const photos = galleryRef.current?.querySelectorAll('[data-photo]')
     if (photos) {
       gsap.from(photos, {
@@ -50,10 +49,10 @@ export default function Barbers() {
       photos.forEach((photo) => {
         const img = photo.querySelector('img')
         if (!img) return
-        photo.addEventListener('mouseenter', () => {
+        photo.addEventListener('pointerenter', () => {
           gsap.to(img, { scale: 1.07, duration: 0.6, ease: 'power2.out' })
         })
-        photo.addEventListener('mouseleave', () => {
+        photo.addEventListener('pointerleave', () => {
           gsap.to(img, { scale: 1, duration: 0.6, ease: 'power2.out' })
         })
       })
@@ -62,7 +61,6 @@ export default function Barbers() {
 
   return (
     <section ref={sectionRef} className="bg-white border-b border-black/10">
-      {/* ── Barbers team ── */}
       <div className="py-24 px-8 md:px-24">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
@@ -101,57 +99,24 @@ export default function Barbers() {
         </div>
       </div>
 
-      {/* ── Work gallery ── */}
       <div className="pb-24 px-8 md:px-24">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-10 flex items-end justify-between">
+          <div className="mb-10">
             <p className="font-label text-xs font-bold tracking-[0.35em] uppercase opacity-40">
               HASIL POTONGAN
             </p>
           </div>
-
-          <div
-            ref={galleryRef}
-            className="grid grid-cols-3 md:grid-cols-6 gap-1"
-          >
+          <div ref={galleryRef} className="grid grid-cols-3 md:grid-cols-6 gap-1">
             {[
-              {
-                src: '/images/hasilcukur1.webp',
-                alt: 'Fade haircut',
-              },
-              {
-                src: '/images/hasilcukur2.webp',
-                alt: 'Crew cut',
-              },
-              {
-                src: '/images/hasilcukur3.webp',
-                alt: 'Classic cut',
-              },
-              {
-                src: '/images/hasilcukur4.webp',
-                alt: 'Taper fade',
-              },
-              {
-                src: '/images/hasilcukur5.webp',
-                alt: 'Styling',
-              },
-              {
-                src: '/images/hasilcukur6.webp',
-                alt: 'Beard trim',
-              },
+              { src: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80', alt: 'Fade haircut' },
+              { src: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80', alt: 'Crew cut' },
+              { src: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80', alt: 'Classic cut' },
+              { src: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80', alt: 'Taper fade' },
+              { src: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80', alt: 'Styling' },
+              { src: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80', alt: 'Beard trim' },
             ].map((photo, i) => (
-              <div
-                key={i}
-                data-photo
-                className="aspect-square overflow-hidden bg-black relative cursor-default"
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover grayscale"
-                  sizes="(max-width: 768px) 33vw, 16vw"
-                />
+              <div key={i} data-photo className="aspect-square overflow-hidden bg-black relative cursor-default">
+                <Image src={photo.src} alt={photo.alt} fill className="object-cover grayscale" sizes="(max-width: 768px) 33vw, 16vw" />
               </div>
             ))}
           </div>

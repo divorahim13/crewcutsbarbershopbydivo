@@ -19,30 +19,24 @@ export default function Journal() {
       duration: 0.8,
       stagger: 0.15,
       ease: 'power3.out',
-      scrollTrigger: {
-        trigger: gridRef.current,
-        start: 'top 80%',
-      },
+      scrollTrigger: { trigger: gridRef.current, start: 'top 80%' },
     })
 
     articles.forEach((article) => {
       const img = article.querySelector('img')
       if (!img) return
-      article.addEventListener('mouseenter', () => {
+      // pointerenter — works on mouse and touch
+      article.addEventListener('pointerenter', () => {
         gsap.to(img, { scale: 1.06, duration: 0.7, ease: 'power2.out' })
       })
-      article.addEventListener('mouseleave', () => {
+      article.addEventListener('pointerleave', () => {
         gsap.to(img, { scale: 1, duration: 0.7, ease: 'power2.out' })
       })
     })
   }, { scope: sectionRef })
 
   return (
-    <section
-      id="journal"
-      ref={sectionRef}
-      className="py-24 px-8 md:px-24 bg-surface-bright border-b border-black/10"
-    >
+    <section id="journal" ref={sectionRef} className="py-24 px-8 md:px-24 bg-surface-bright border-b border-black/10">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <h2 className="font-headline text-5xl md:text-7xl font-black tracking-tighter uppercase">
